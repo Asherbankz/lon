@@ -118,6 +118,7 @@ export const feedPosts: Post[] = [
     date: "02 May 2025",
     verified: true,
     text: "Building still owner anything writer. Drop a line if you want the full story.",
+    image: beachImg,
     tags: ["doctor", "support"],
     likes: 7,
     comments: 2,
