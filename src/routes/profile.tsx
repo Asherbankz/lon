@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Settings, Grid3x3, Bookmark, Heart } from "lucide-react";
+import { useState } from "react";
+import { Settings, Grid3x3, Bookmark, Heart, Maximize2, Minimize2 } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { VerifiedBadge } from "@/components/verified-badge";
 import { feedPosts } from "@/lib/mock-data";
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/profile")({
 
 function ProfilePage() {
   const posts = feedPosts.filter((p) => p.image);
+  const [wide, setWide] = useState(false);
   return (
     <AppShell>
       <header className="flex items-center justify-between px-5 pt-4 pb-3">
@@ -46,8 +48,20 @@ function ProfilePage() {
         <TabIcon><Bookmark className="h-5 w-5" /></TabIcon>
         <TabIcon><Heart className="h-5 w-5" /></TabIcon>
       </div>
-      <div className="grid grid-cols-3 gap-0.5 pt-0.5">
-        {posts.concat(posts).slice(0, 9).map((p, i) => (
+      <div className="flex justify-end px-3 pt-2">
+        <button
+          type="button"
+          onClick={() => setWide((v) => !v)}
+          aria-label={wide ? "Shrink grid" : "Expand grid"}
+          className="rounded-full bg-secondary p-2 text-foreground hover:bg-accent"
+        >
+          {wide ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+        </button>
+      </div>
+      <div
+        className={`grid gap-0.5 pt-0.5 ${wide ? "grid-cols-2" : "grid-cols-3"}`}
+      >
+        {posts.concat(posts).slice(0, wide ? 6 : 9).map((p, i) => (
           <div key={i} className="aspect-square overflow-hidden bg-secondary">
             <img src={p.image} alt="" className="h-full w-full object-cover" />
           </div>
