@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Bell, Phone, Plus, Search, Play, ShoppingBag, ChevronDown } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
@@ -22,7 +22,7 @@ function Index() {
       <header className="flex items-center justify-between px-5 pt-4 pb-3">
         <h1 className="font-script text-3xl text-primary leading-none">Lona</h1>
         <div className="flex items-center gap-5 text-foreground">
-          <button aria-label="Notifications"><Bell className="h-5 w-5" /></button>
+          <Link to="/notifications" aria-label="Notifications"><Bell className="h-5 w-5" /></Link>
           <button aria-label="Calls"><Phone className="h-5 w-5" /></button>
           <button aria-label="New post"><Plus className="h-5 w-5" /></button>
         </div>
