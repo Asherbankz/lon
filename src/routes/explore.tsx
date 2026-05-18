@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Bell, Plus, Circle } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
@@ -22,8 +22,8 @@ function ExplorePage() {
   return (
     <AppShell>
       <header className="flex items-center justify-end gap-5 px-5 pt-4 pb-3 text-foreground">
-        <button aria-label="Notifications"><Bell className="h-5 w-5" /></button>
-        <button aria-label="New"><Plus className="h-5 w-5" /></button>
+        <Link to="/notifications" aria-label="Notifications"><Bell className="h-5 w-5" /></Link>
+        <button type="button" aria-label="New"><Plus className="h-5 w-5" /></button>
       </header>
       <h1 className="px-5 pb-3 text-2xl font-semibold text-foreground">
         Explore <span className="text-muted-foreground">•</span>
